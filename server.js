@@ -20,9 +20,7 @@ const app = express();
 mongoose.set("strictQuery", false);
 const mongoDB = process.env.MONGODB_URL;
 
-app.use(cors({
-    origin: [process.env.LOCAL, process.env.DEPLOY]
-}));
+app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 app.use(session({secret: "cats", resave: false, saveUninitialized: true}));
