@@ -87,9 +87,9 @@ exports.post_login = asyncHandler(async (req, res, next) => {
 exports.post_delete = asyncHandler(async (req, res, next) => {
     const user = await users.findById(req.body.id).exec();
 
-    await users.findByIdAndDelete(req.body.id);
-    await posts.deleteMany({user: req.body.id});
-    await comments.deleteMany({user: req.body.id});
+    await users.findByIdAndDelete(req.params.id);
+    await posts.deleteMany({user: req.params.id});
+    await comments.deleteMany({user: req.params.id});
 });
 
 exports.refresh_token = asyncHandler(async (req, res, next) => {
